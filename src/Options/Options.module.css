@@ -1,0 +1,10 @@
+.button {
+border: 1px;
+border: solid black;
+border-radius: 40px;
+background-color: rgb(223, 233, 228);
+}
+.cont{
+    display: flex;
+    gap: 20px;
+}
