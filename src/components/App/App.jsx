@@ -80,7 +80,7 @@ Please leave your feedback about our service by selecting one of the options bel
         value={count}
         totalFeedback={totalFeedback}
         positiveFeedback={positiveFeedback}
-        positiveFeedback={positiveFeedback} 
+     
        
       />
       }
