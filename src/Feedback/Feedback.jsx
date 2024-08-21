@@ -14,8 +14,11 @@ export default function feedback({ value, totalFeedback, positiveFeedback }){
     <p>
       <b>Total:</b> {totalFeedback}
     </p>
-    <p>
-      <b>Positive:</b> {positiveFeedback}%
+   <p>
+     
+      <b>Positive:</b> {positiveFeedback()}%
+     
+      
     </p>
   </div>
 )

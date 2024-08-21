@@ -48,7 +48,9 @@ function App() {
     setCount({ ...count, [feedbackType]: count[feedbackType] + 1 });
   };
   const positiveFeedback = () => {
-  count.good/totalFeedback*100
+    return(Math.round( count.good/totalFeedback*100) )
+    
+
 }
 console.log({positiveFeedback})
  const resetFeedback = () => {
@@ -72,11 +74,20 @@ Please leave your feedback about our service by selecting one of the options bel
         resetFeedback={resetFeedback}
         totalFeedback={totalFeedback}
       />
-      <Feedback
-          value={count}
-          totalFeedback={totalFeedback}
+      {
+        totalFeedback > 0 &&
+        <Feedback
+        value={count}
+        totalFeedback={totalFeedback}
         positiveFeedback={positiveFeedback}
+        positiveFeedback={positiveFeedback} 
+       
       />
+      }
+      {
+        totalFeedback===0 && "No feedback yet"
+      }
+      
       
       
   </div>
