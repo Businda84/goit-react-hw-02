@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+
 import Feedback from '../Feedback/Feedback'
 import Options from '../Options/Options'
-
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import Notification from '../Notification/Notification'
 import './App.css'
 
 // function App() {
@@ -38,10 +37,16 @@ import './App.css'
 function App() {
   
   
-  const [count, setCount] = useState({
-	good: 0,
-	neutral: 0,
-	bad: 0
+  const [count, setCount] = useState(() => {
+    const savedCount = window.localStorage.getItem("count");
+    if (savedCount !== null) {
+      return JSON.parse(savedCount);
+    }
+    return {
+      good: 0,
+      neutral: 0,
+      bad: 0
+    };
   })
 
   const updateFeedback = (feedbackType) => {
@@ -52,12 +57,18 @@ function App() {
     
 
 }
-console.log({positiveFeedback})
+
+  
+  
  const resetFeedback = () => {
    setCount({good: 0,
         neutral: 0,
           bad: 0})
-  }
+ }
+  
+   useEffect(() => {
+    window.localStorage.setItem("count", JSON.stringify(count));
+  }, [count]);
   const totalFeedback = count.good + count.neutral + count.bad;
   
 
@@ -84,9 +95,7 @@ Please leave your feedback about our service by selecting one of the options bel
        
       />
       }
-      {
-        totalFeedback===0 && "No feedback yet"
-      }
+      <Notification/>
       
       
       
