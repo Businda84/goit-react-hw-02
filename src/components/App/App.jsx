@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react'
 import Feedback from '../Feedback/Feedback'
 import Options from '../Options/Options'
 import Notification from '../Notification/Notification'
+import Description from '../Description/Description'
 import './App.css'
 
 // function App() {
@@ -72,14 +73,8 @@ function App() {
   const totalFeedback = count.good + count.neutral + count.bad;
   
 
-  return (
-    <div>
-    <h1>Sip Happens Café</h1>
- 
-      <p>
-Please leave your feedback about our service by selecting one of the options below.
-      </p>
-      <div />
+  return (<div>
+ <Description/>
       <Options
         updateFeedback={updateFeedback}
         resetFeedback={resetFeedback}
@@ -91,15 +86,15 @@ Please leave your feedback about our service by selecting one of the options bel
         value={count}
         totalFeedback={totalFeedback}
         positiveFeedback={positiveFeedback}
-     
-       
-      />
+     />
       }
-      <Notification/>
-      
+       {totalFeedback === 0 && <Notification />}
       
       
   </div>
+   
+      
+
 
     
 
